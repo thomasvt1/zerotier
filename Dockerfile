@@ -2,7 +2,7 @@ FROM debian:stretch as builder
 
 ## Supports x86_64, x86, arm, and arm64
 
-RUN apt-get update && apt-get install curl -y && curl -s https://install.zerotier.com/ | bash
+RUN apt-get update && apt-get install curl gnupg2 apt-utils -y && curl -s https://install.zerotier.com/ | bash
 
 # Set the base image
 FROM lsiobase/alpine
