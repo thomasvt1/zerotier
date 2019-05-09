@@ -2,7 +2,7 @@ FROM debian:stretch as builder
 
 ## Supports x86_64, x86, arm, and arm64
 
-RUN curl -s https://install.zerotier.com/ | sudo bash
+RUN apt-get install curl && curl -s https://install.zerotier.com/ | bash
 
 # Set the base image
 FROM lsiobase/alpine
