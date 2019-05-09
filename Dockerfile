@@ -6,7 +6,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 ARG APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=DontWarn
 
 RUN apt-get update && apt-get install -y curl gnupg && \
-    apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys 0x1657198823e52a61  && \
+    gpg --keyserver hkps://hkps.pool.sks-keyservers.net --recv-keys 0x1657198823e52a61 && \
     echo "deb http://download.zerotier.com/debian/stretch stretch main" > /etc/apt/sources.list.d/zerotier.list  && \
     apt-get update && apt-get install -y zerotier-one=1.2.12
 
