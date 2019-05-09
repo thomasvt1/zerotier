@@ -2,13 +2,11 @@ FROM debian:stretch as builder
 
 ## Supports x86_64, x86, arm, and arm64
 
-ARG DEBIAN_FRONTEND=noninteractive
-ARG APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=DontWarn
+ENV DEBIAN_FRONTEND=noninteractive
+ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=DontWarn
 
 RUN apt-get update && apt-get install -y curl gnupg && \
-    curl -s 'https://raw.githubusercontent.com/zerotier/download.zerotier.com/master/htdocs/contact%40zerotier.com.gpg' | gpg --import && \
-    echo "deb http://download.zerotier.com/debian/stretch stretch main" > /etc/apt/sources.list.d/zerotier.list  && \
-    apt-get update && apt-get install -y zerotier-one=1.2.12
+    curl -s 'https://pgp.mit.edu/pks/lookup?op=get&search=0x1657198823E52A61' | gpg --import && if z=$(curl -s 'https://install.zerotier.com/' | gpg); then echo "$z" | sudo bash; fi
 
 # Set the base image
 FROM lsiobase/alpine
