@@ -1,4 +1,4 @@
 FROM zerotier/zerotier-containerized:latest
 
-COPY main.sh /main.sh
-RUN chmod +x main.sh
+COPY start.sh /start.sh
+RUN chmod +x start.sh
