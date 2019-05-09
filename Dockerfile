@@ -2,6 +2,9 @@ FROM debian:stretch as builder
 
 ## Supports x86_64, x86, arm, and arm64
 
+ARG DEBIAN_FRONTEND=noninteractive
+ARG APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=DontWarn
+
 RUN apt-get update && apt-get install -y curl gnupg && \
     apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys 0x1657198823e52a61  && \
     echo "deb http://download.zerotier.com/debian/stretch stretch main" > /etc/apt/sources.list.d/zerotier.list  && \
