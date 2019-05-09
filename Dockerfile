@@ -5,7 +5,7 @@ FROM lsiobase/alpine
 MAINTAINER Thomas <thomasvt@me.com>
 
 RUN apk add --no-cache curl && \
-    curl -s https://install.zerotier.com/ | sudo bash
+    curl -s https://install.zerotier.com/ | bash
 
 ADD start.sh /
 RUN chmod 0755 /start.sh
